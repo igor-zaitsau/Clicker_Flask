@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<meta content="text/html; charset=utf-8" />
+	<title>Sign in</title>
+	<link type='text/css' rel="stylesheet" href="{{ url_for('static', filename='css/sign_up.css') }}">
+        <link rel="shortcut icon" href="static/img/sign_up.ico" type="image/x-icon">
+
+</head>
+<body>
+
+{% for cat, msg in get_flashed_messages(True) %}
+    <div class="flash {{ cat }}">{{ msg }}</div>
+    {% endfor %}
+
+<form action='' id="login"  method="POST">
+
+    <h1 id="ff-proof" class="ribbon">Login form &nbsp;&nbsp;</h1>
+
+
+    <fieldset id="inputs">
+        <input id="username" name="email" type="text" placeholder="Email" autocomplete="off"/>
+        <input id="password" name="password" type="password" placeholder="Password" />
+
+    </fieldset>
+
+    <fieldset id="actions">
+        <input type="submit" id="submit" value="ENTER"/>
+       <p class="option"><a href="/registration">Регистрация</a></p>
+    </fieldset>
+	
+</form>
+</body>
+</html>
+

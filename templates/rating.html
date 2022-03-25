@@ -1,0 +1,38 @@
+{% extends 'base_top.html' %}
+
+{% block title %}
+Top players
+{% endblock %}
+
+{% block title2 %}
+        <link rel="shortcut icon" href="static/img/rating.ico" type="image/x-icon">
+{% endblock %}
+
+{% block body %}
+<br>
+<center>
+    {% for column in rows %}
+    {% if current_user.get_id() == column[1] %}
+<table >
+   <tr>
+       <th>Place</th>
+       <th>ID Player</th>
+       <th>Score</th>
+   </tr>
+   <tr class="BK"><td>{{ column[0] }}</td><td>id{{ column[1] }}</td><td>{{ column[2] }}</td></tr>
+  </table>
+<br><br>
+    {% endif %}
+    {% endfor %}
+<table>
+   <tr>
+       <th>Place</th>
+       <th>ID Player</th>
+       <th>Score</th>
+   </tr>
+    {% for column in rows %}
+   <tr><td>{{ column[0] }}</td><td>id{{ column[1] }}</td><td>{{ column[2] }}</td></tr>
+    {% endfor %}
+  </table>
+</center>>
+{% endblock %}

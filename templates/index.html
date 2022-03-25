@@ -1,0 +1,54 @@
+{% extends 'base_top.html' %}
+
+{% block title %}
+Home page
+{% endblock %}
+
+{% block title2 %}
+
+	<link rel="shortcut icon" href="static/img/index.ico" type="image/x-icon">
+   <link rel="stylesheet" href="{{ url_for('static', filename = 'css/Button.css') }}">
+<script >
+    var clicks = {{ score }};
+
+    function plus() {
+        clicks += 1;
+        document.getElementById("counter-label").innerHTML = clicks;
+        save();
+    }
+
+    function minus() {
+    	clicks -= 1;
+    	document.getElementById("counter-label").innerHTML = clicks;
+    	save();
+    }
+
+    function save()
+    {
+		$.ajax({
+  			type: "POST",
+  			url: "/save",
+  			data: JSON.stringify(clicks),
+  			contentType: "application/json",
+ 			dataType: 'json'
+		});
+    }
+    </script>
+{% endblock %}
+
+
+
+{% block body %}
+
+
+   <center>
+		<div class="block-grid">
+			<h1 id="counter-label" style="margin: 10px;">{{ score }}</h1>
+			<div class="row">
+				<button type="button"  class="button button3 " onclick="minus()">-1</button>
+				<button type="button"  class="button button1 " onclick="plus()">+1</button>
+			</div>
+		</div>
+	</center>
+
+{% endblock %}
